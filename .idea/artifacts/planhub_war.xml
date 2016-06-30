@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="planhub:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="planhub.war">
+      <element id="artifact" artifact-name="planhub:war exploded" />
+    </root>
+  </artifact>
+</component>

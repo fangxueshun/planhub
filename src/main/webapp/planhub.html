@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Planhub</title>
+    <link rel="icon" type="image/x-icon" href="/images/web_main_icon.png">
+    <style type="text/css">
+
+        html, body, div, p, a, img, h2, h1 {
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            border: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            display: block;
+        }
+        .top-banner {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            background: #398dee;
+            /*下面这些参数暂时没有用到
+            z-index: 100;
+            background-image: initial;
+            background-position-x: initial;
+            background-position-y: initial;
+            background-size: initial;
+            background-repeat-x: initial;
+            background-repeat-y: initial;
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: rgb(57, 141, 238);
+            min-width: 956px;
+            */
+        }
+        .main-container {
+            position: absolute;
+            width: 100%;
+            top: 50px;
+            bottom: 0px;
+            overflow: hidden;
+            min-width: 956px;
+        }
+        .main-container .sidebar {
+            width: 240px;
+            height: 100%;
+            float: left;
+            background: #f5f5f5;
+        }
+
+        .sidebar .sidebar-content {
+            overflow: auto;
+            width: 240px;
+            position: absolute;
+            top: 62px;
+            bottom: 61px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 1px #ffffff;
+        }
+
+
+        .sidebar .hd {
+            position: relative;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 1px #ffffff;
+            height: 60px;
+            line-height: 60px;
+        }
+
+        .sidebar .sidebar-trash {
+            height: 60px;
+            position: absolute;
+            bottom: 0px;
+        }
+
+
+
+        .main-container .center {
+            position: absolute;
+            left: 240px;
+            right: 0px;
+            bottom: 0px;
+            top: 0px;
+            border-left: 1px solid #e3e3e3;
+            background: #ffffff;
+        }
+
+        .center .category-hd {
+            position: relative;
+            height: 60px;
+            background: #fff;
+            border-bottom: 1px solid #e0e1e5;
+        }
+
+        .center .category-ct {
+            position: absolute;
+            top: 61px;
+            right: 290px;
+            left: 0px;
+            bottom: 0px;
+            border-right: 1px solid #e0e1e5;
+            box-sizing: border-box;
+            background: #ffffff;
+        }
+        .category-ct .explorer-tools {
+            margin-left: 10px;
+            height: 50px;
+            position: relative;
+        }
+        .category-ct .explorer-main {
+            border-top: 1px solid #e0e1e5;
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: rgb(224, 225, 229);
+        }
+        .explorer-main .explorer-hd {
+            margin-left: 210px;
+            position: relative;
+            height: 40px;
+            color: #398dee;
+        }
+        .explorer-main .filetree-selector {
+            position: absolute;
+            width: 210px;
+            top: 50px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            border-right: 1px solid #e0e1e5;
+            color: #595959;
+        }
+
+        .center .chat-ct {
+            position: absolute;
+            top: 61px;
+            right: 0px;
+            bottom: 0px;
+            width: 290px;
+            background: #ffffff;
+        }
+    </style>
+
+
+</head>
+<body>
+<!--##########banner#########-->
+<div class="top-banner">
+    test_banner
+</div>
+<!--##########sidebar##########-->
+<div class="main-container">
+    <div class="sidebar">
+        <div class="hd">
+            <h1>hello world!</h1>
+        </div>
+        <div class="sidebar-content">
+            test_sidebar-container
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wraptest-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wraptest-widget-scroller-wrap
+            test-widget-scroller-wraptest-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+            test-widget-scroller-wrap
+        </div>
+        <div class="sidebar-trash" >
+            <h1>trash</h1>
+        </div>
+    </div>
+
+    <div class="center">
+        <div class="category-hd">
+            <h1>content</h1>
+        </div>
+
+        <div class="category-ct">
+            <div class="explorer-tools">
+                <h1>explorer-tools-ct</h1>
+            </div>
+            <div class="explorer-main">
+                <div class="filetree-selector">
+                    <h1>filetree-selector</h1>
+                </div>
+                <div class="explorer-hd">
+                    <h1>explorer-hd</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-ct">
+            <h1>chat-ct</h1>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
