@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class getPlanList {
 
-    @RequestMapping(value = "/v01/user/register",method = RequestMethod.GET)
+    @RequestMapping(value = "/v01/user/planlist",method = RequestMethod.GET)
 
     public  @ResponseBody
     String test(){

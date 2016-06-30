@@ -35,6 +35,6 @@
     <mvc:resources mapping="/images/**" location="/images/" />
     <!--resources mapping="/js/**" location="/js/" /-->
     <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-    <content:component-scan base-package="planhub.web"/>
+    <content:component-scan base-package="planhub.web,planhub.dao,planhub.domain"/>
 
 </beans>
