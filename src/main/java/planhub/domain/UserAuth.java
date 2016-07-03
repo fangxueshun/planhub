@@ -10,15 +10,36 @@ public class UserAuth {
     private long uid;
     private String password;
     private String email;
+    private String userName;
+
+    public long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(long timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    private long timeStamp;
+
+
+
 
     /*
     *transform UserAuth object in to json object.
     * */
-    public String toJson(UserAuth userAuth){
-        Gson gson = new Gson();
-        return gson.toJson(userAuth);
+    @Override
+    public String toString(){
+        return "User [id=" + uid + ", email=" + email + ", userName=" + userName + "]";
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
     public long getUid() {
         return uid;
     }

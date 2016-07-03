@@ -2,7 +2,8 @@ package planhub.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import planhub.domain.UserAuth;
 
@@ -15,11 +16,11 @@ public class UserDao {
     //自动注入一个MongoTemplate的bean
     @Autowired
     private MongoTemplate mongoTemplate;
-    UserAuth user = new UserAuth();
-    public boolean register(String emial,String password){
-        user.setEmail(emial);
-        user.setPassword(password);
-        mongoTemplate.insert(user,"users");
-        return true;
+
+    private final static String COLLECTION_NAME="users";
+    public boolean insertUser(UserAuth userAuth){
+        mongoTemplate.insert(userAuth,COLLECTION_NAME);
+        Query has_uid=new Query(Criteria.where("uid").is(userAuth.getUid()));
+        return mongoTemplate.exists(has_uid,UserAuth.class,COLLECTION_NAME);
     }
 }
