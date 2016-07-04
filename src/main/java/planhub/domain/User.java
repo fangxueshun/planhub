@@ -1,36 +1,36 @@
 package planhub.domain;
 
-import com.google.gson.Gson;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author Created by little_sheep on 2016/5/24.
  * @version v0.1 use for user register and login.
  */
-public class UserAuth {
+public class User {
     private long uid;
+    @Length(min=6,max=12,message="密码长度要在6-12位之间")
     private String password;
+    @Email(message = "邮箱格式不正确")
     private String email;
     private String userName;
-
-    public long getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(long timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
-    private long timeStamp;
-
-
-
+    private long registerTime;
 
     /*
-    *transform UserAuth object in to json object.
+    *transform User object in to json object.
     * */
     @Override
     public String toString(){
         return "User [id=" + uid + ", email=" + email + ", userName=" + userName + "]";
+    }
+
+    public long getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(long registerTime) {
+        this.registerTime = registerTime;
     }
 
     public String getUserName() {

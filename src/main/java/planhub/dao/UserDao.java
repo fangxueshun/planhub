@@ -1,26 +1,37 @@
 package planhub.dao;
 
+import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
-import planhub.domain.UserAuth;
+import planhub.domain.User;
 
 /**
  * Created by little_sheep on 2016/5/24.
+ *
  */
-//通过注解定义一个DAO
 @Repository
 public class UserDao {
-    //自动注入一个MongoTemplate的bean
     @Autowired
     private MongoTemplate mongoTemplate;
-
     private final static String COLLECTION_NAME="users";
-    public boolean insertUser(UserAuth userAuth){
-        mongoTemplate.insert(userAuth,COLLECTION_NAME);
-        Query has_uid=new Query(Criteria.where("uid").is(userAuth.getUid()));
-        return mongoTemplate.exists(has_uid,UserAuth.class,COLLECTION_NAME);
+
+    //添加用户
+    public void insertUser(User user){
+        mongoTemplate.insert(user,COLLECTION_NAME);
+    }
+
+    //查询字段是否存在
+    public boolean keyExists(String key,Object value){
+        return mongoTemplate.exists(new Query(Criteria.where(key).is(value)),User.class,COLLECTION_NAME);
+    }
+
+    //更新用户某个字段
+    //TODO 测试该接口
+    public WriteResult updateUserField(long uid,String field,Object value){
+        return  mongoTemplate.updateFirst(new Query(Criteria.where("uid").is(uid)), Update.update(field,value),User.class,COLLECTION_NAME);
     }
 }
