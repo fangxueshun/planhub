@@ -11,8 +11,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class User {
     private long uid;
     @Length(min=6,max=12,message="密码长度要在6-12位之间")
+    @NotEmpty
     private String password;
     @Email(message = "邮箱格式不正确")
+    @NotEmpty
     private String email;
     private String userName;
     private long registerTime;

@@ -24,6 +24,17 @@ public class UserDao {
         mongoTemplate.insert(user,COLLECTION_NAME);
     }
 
+    //验证用户名和密码是否匹配,等于1表示正确，0表示错误
+    public boolean getMatchCount(String email,String password){
+        Long matchCount = mongoTemplate.count(new Query(Criteria.where("email").is(email).andOperator(Criteria.where("password").is(password))),User.class,COLLECTION_NAME);
+        if (matchCount==1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     //查询字段是否存在
     public boolean keyExists(String key,Object value){
         return mongoTemplate.exists(new Query(Criteria.where(key).is(value)),User.class,COLLECTION_NAME);

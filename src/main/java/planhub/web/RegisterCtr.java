@@ -12,12 +12,13 @@ import planhub.domain.User;
 import planhub.sevice.RegisterService;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Null;
 
 /**
  * Created by little_sheep on 2016/5/24.
  */
 @Controller
-public class RegisterConroller {
+public class RegisterCtr {
     Gson gson = new Gson();
     @Autowired
     private RegisterService registerService;
