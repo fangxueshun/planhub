@@ -1,6 +1,7 @@
 package planhub.web;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,7 +20,7 @@ import javax.validation.constraints.Null;
  */
 @Controller
 public class RegisterCtr {
-    Gson gson = new Gson();
+    Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     @Autowired
     private RegisterService registerService;
     @RequestMapping(value = "/v01/user/register",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
@@ -34,7 +35,7 @@ public class RegisterCtr {
                 return gson.toJson(user);
             }
             else{
-                return "注册失败，邮箱已被占用";
+                return gson.toJson("注册失败，邮箱已被占用");
             }
         }
 

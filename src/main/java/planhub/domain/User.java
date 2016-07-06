@@ -1,5 +1,5 @@
 package planhub.domain;
-
+import com.google.gson.annotations.Expose;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -9,14 +9,23 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @version v0.1 use for user register and login.
  */
 public class User {
+    @Expose
     private long uid;
+
     @Length(min=6,max=12,message="密码长度要在6-12位之间")
     @NotEmpty
+    @Expose(serialize = false)
     private String password;
+
     @Email(message = "邮箱格式不正确")
     @NotEmpty
+    @Expose
     private String email;
+
+    @Expose
     private String userName;
+
+    @Expose(serialize = false)
     private long registerTime;
 
     /*

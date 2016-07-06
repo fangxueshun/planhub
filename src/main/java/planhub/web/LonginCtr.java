@@ -1,6 +1,7 @@
 package planhub.web;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,11 +19,13 @@ import java.util.Map;
 public class LonginCtr {
     @Autowired
      private LoginService loginService;
-    Gson gson = new Gson();
+
+    //特定字段不进行反序列化
+    Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     @RequestMapping (value = "/v01/user/login",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
 
     @ResponseBody
-    public String longin(@RequestBody @Valid User user,BindingResult result){
+    public String login(@RequestBody @Valid User user,BindingResult result){
         if (result.hasErrors())
             return gson.toJson(result.getAllErrors());
         else{
