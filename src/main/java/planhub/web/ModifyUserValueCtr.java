@@ -28,11 +28,7 @@ public class ModifyUserValueCtr {
     @RequestMapping(value = "/v01/user/modify",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
 
     @ResponseBody
-    public String login(@RequestBody @Valid User user, BindingResult result){
-        if (result.hasErrors())
-            return gson.toJson(result.getAllErrors());
-        else{
+    public String login(@RequestBody  User user){
             return gson.toJson(modifyService.modifyService(user));
-        }
     }
 }

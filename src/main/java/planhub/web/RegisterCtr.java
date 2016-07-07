@@ -13,7 +13,6 @@ import planhub.domain.User;
 import planhub.sevice.RegisterService;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Null;
 
 /**
  * Created by little_sheep on 2016/5/24.
@@ -21,6 +20,7 @@ import javax.validation.constraints.Null;
 @Controller
 public class RegisterCtr {
     Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+    Gson normalGson = new Gson();
     @Autowired
     private RegisterService registerService;
     @RequestMapping(value = "/v01/user/register",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
@@ -28,7 +28,7 @@ public class RegisterCtr {
     @ResponseBody
     public String saveUser(@RequestBody @Valid User user,BindingResult result){
         if (result.hasErrors())
-            return gson.toJson(result.getAllErrors());
+            return normalGson.toJson(result.getAllErrors());
         else{
             if (registerService.register(user)) {
 

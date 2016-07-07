@@ -17,6 +17,7 @@ public class RegisterService {
         long registerTime = System.currentTimeMillis();
         user.setUid(Long.parseLong(Long.toString(registerTime).substring(4)));
         user.setRegisterTime(registerTime);
+        user.setUserName("");
         if (!userDao.keyExists("uid", user.getUid())){
             userDao.insertUser(user);
             return userDao.keyExists("uid", user.getUid());

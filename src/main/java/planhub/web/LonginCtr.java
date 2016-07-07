@@ -22,12 +22,13 @@ public class LonginCtr {
 
     //特定字段不进行反序列化
     Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+    Gson normalGson = new Gson();
     @RequestMapping (value = "/v01/user/login",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
 
     @ResponseBody
     public String login(@RequestBody @Valid User user,BindingResult result){
         if (result.hasErrors())
-            return gson.toJson(result.getAllErrors());
+            return normalGson.toJson(result.getAllErrors());
         else{
             if (loginService.login(user)) {
 
