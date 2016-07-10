@@ -20,8 +20,9 @@ public class UserDao {
     private final static String COLLECTION_NAME="users";
 
     //添加用户
-    public void insertUser(User user){
+    public boolean insertUser(User user){
         mongoTemplate.insert(user,COLLECTION_NAME);
+        return keyExists("uid",user.getUid());
     }
 
     //判断记录实体是否存在

@@ -10,32 +10,34 @@ import planhub.domain.User;
 import planhub.sevice.LoginService;
 
 import javax.validation.Valid;
-import java.util.Map;
 
 /**
  * Created by little_sheep on 2016/7/6.
  */
 @Controller
-public class LonginCtr {
+@RequestMapping("/v01")
+public class LoginCtr {
     @Autowired
      private LoginService loginService;
 
     //特定字段不进行反序列化
     Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     Gson normalGson = new Gson();
-    @RequestMapping (value = "/v01/user/login",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    //EncryptWithMD5 encryptWithMD5 = new EncryptWithMD5();
+    @RequestMapping (value = "/user/login",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
 
     @ResponseBody
     public String login(@RequestBody @Valid User user,BindingResult result){
         if (result.hasErrors())
             return normalGson.toJson(result.getAllErrors());
         else{
+            //user.setPassword(encryptWithMD5.makeMD5(user.getPassword()));
             if (loginService.login(user)) {
 
                 return gson.toJson(user);
             }
             else{
-                return "登录失败";
+                return gson.toJson("用户名或密码错误登录失败");
             }
         }
     }

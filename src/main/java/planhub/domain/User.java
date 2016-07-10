@@ -12,7 +12,7 @@ public class User {
     @Expose
     private long uid;
 
-    @Length(min=6,max=12,message="密码长度要在6-12位之间")
+    @Length(min=6,max=50,message="密码长度太短")
     @NotEmpty
     @Expose(serialize = false)
     private String password;

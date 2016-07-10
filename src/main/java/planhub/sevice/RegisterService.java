@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import planhub.dao.UserDao;
 import planhub.domain.User;
 
+import java.security.SecureRandom;
+import java.util.Random;
+
 /**
  * Created by little_sheep on 2016/5/24.
  */
@@ -12,18 +15,12 @@ import planhub.domain.User;
 public class RegisterService {
     @Autowired
     private UserDao userDao;
+    private Random random = new SecureRandom();
     public Boolean register(User user){
-        //uid取注册时间的后九位
+        //uid由13位时间戳加3位随机数字组成
         long registerTime = System.currentTimeMillis();
-        user.setUid(Long.parseLong(Long.toString(registerTime).substring(4)));
+        user.setUid(Long.parseLong(Long.toString(registerTime)+Integer.toString(random.nextInt(999))));
         user.setRegisterTime(registerTime);
-        user.setUserName("");
-        if (!userDao.keyExists("uid", user.getUid())){
-            userDao.insertUser(user);
-            return userDao.keyExists("uid", user.getUid());
-        }
-        else {
-            return false;
-        }
+        return userDao.insertUser(user);
     }
 }

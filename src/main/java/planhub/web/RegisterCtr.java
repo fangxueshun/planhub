@@ -11,25 +11,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import planhub.domain.User;
 import planhub.sevice.RegisterService;
-
 import javax.validation.Valid;
 
 /**
  * Created by little_sheep on 2016/5/24.
  */
 @Controller
+@RequestMapping("/v01")
 public class RegisterCtr {
     Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     Gson normalGson = new Gson();
     @Autowired
     private RegisterService registerService;
-    @RequestMapping(value = "/v01/user/register",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/user/register",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
 
     @ResponseBody
     public String saveUser(@RequestBody @Valid User user,BindingResult result){
-        if (result.hasErrors())
+        if (result.hasErrors()) {
             return normalGson.toJson(result.getAllErrors());
+        }
         else{
+            user.setPassword(user.getPassword());
+            user.setUserName("");
             if (registerService.register(user)) {
 
                 return gson.toJson(user);

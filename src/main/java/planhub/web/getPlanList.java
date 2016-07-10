@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by little_sheep on 2016/5/15.
  */
 @Controller
+@RequestMapping("/v01")
 public class getPlanList {
 
-    @RequestMapping(value = "/v01/user/planlist",method = RequestMethod.GET)
+    @RequestMapping(value = "/user/planlist",method = RequestMethod.GET)
 
     public  @ResponseBody
     String test(){
