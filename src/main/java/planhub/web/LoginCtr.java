@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import planhub.domain.User;
 import planhub.sevice.LoginService;
+import planhub.util.RestResponseException;
 
 import javax.validation.Valid;
 
@@ -37,7 +38,7 @@ public class LoginCtr {
                 return gson.toJson(user);
             }
             else{
-                return gson.toJson("用户名或密码错误登录失败");
+                throw new RestResponseException("BAD_REQUEST","邮箱已被注册");
             }
         }
     }
