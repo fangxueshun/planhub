@@ -1,2 +1,38 @@
-# planHub
-If there is no difference between today and yesterday, then tomorrow what meaning does.
+# planhub
+ - brief
+ - data structure
+
+
+### - brief
+>创建一个计划
+
+（比如创建一个明天的计划A：明天晚上11:00看完《数据结构》的算法分析，并完成对应的例子）
+
+>改变计划的进度
+
+计划并非是便签记事（记录要买菜，这个便签只有三个状态：未完成、完成中、已完成），计划需要你不断完成一个个小的目标，这些目标可以没有写到计划里，但是可以通过上传截图、代码、文字或者其他证明你在完成这个计划中的证据，并改变计划的进度，该操作可以撤销，如果没有证据，则不生效，计划进度只能增加，不能减少。比如上面创建的计划A，我看了算法分析中的一个求最小序列的例子，并完成了对应的代码，我可以把代码上传或者截图，并创建一个计划进度10%：完成求最小序列的例子
+
+>完成计划
+
+计划是分级的，一个计划可能被拆解成很多小的计划，但是每当一个计划完成时，都会改变其上级计划的状态和进度，比如我计划3周完成《数据结构》的阅读，切今天的机会是完成算法分析，当我今天计划完成100%时，我的总计划进度也会改变。
+
+### - data structure
+> interface
+Interface Plan
+
+return type  | method 
+---|---
+void | changePlan
+void | completePlan
+
+
+
+
+> class
+
+AbstractPlan
+
+return type | method
+---|---
+abstract ProgressRate | changePlan()
+
