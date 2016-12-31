@@ -21,7 +21,7 @@ import javax.validation.Valid;
  * Created by little_sheep on 2016/7/6.
  */
 @Controller
-@RequestMapping("/v01")
+@RequestMapping("/v0.1")
 public class ModifyUserValueCtr {
     @Autowired
     private ModifyService modifyService;

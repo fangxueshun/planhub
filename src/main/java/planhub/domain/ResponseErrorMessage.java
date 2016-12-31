@@ -40,11 +40,16 @@ public class ResponseErrorMessage extends ErrorMessageDao {
     }
 
     public Date getServerTime() {
-        return serverTime;
+        return (Date) serverTime.clone();
     }
 
     public void setServerTime(Date serverTime) {
-        this.serverTime = serverTime;
+        if(serverTime!=null){
+            this.serverTime = new Date(serverTime.getTime());
+        }else {
+            this.serverTime = new Date();
+        }
+
     }
 
     public Throwable getThrowable() {

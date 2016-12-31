@@ -13,7 +13,7 @@ import planhub.domain.User;
  * Created by little_sheep on 2016/5/24.
  *
  */
-@Repository
+@Repository()
 public class UserDao {
     @Autowired
     private MongoTemplate mongoTemplate;

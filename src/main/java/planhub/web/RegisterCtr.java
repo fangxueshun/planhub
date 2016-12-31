@@ -17,7 +17,7 @@ import javax.validation.Valid;
  * Created by little_sheep on 2016/5/24.
  */
 @Controller
-@RequestMapping("/v01")
+@RequestMapping("/v0.1")
 public class RegisterCtr {
     Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     Gson normalGson = new Gson();
